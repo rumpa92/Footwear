@@ -181,7 +181,7 @@ export default {
           price: 149.99,
           originalPrice: 179.99,
           reviews: 2847,
-          image: 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=800&h=800&fit=crop&q=90'
+          image: 'https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F9cae65aca03b486b84479e03bc78dddd?format=webp&width=800'
         },
         {
           name: 'Sport Elite Pro',
