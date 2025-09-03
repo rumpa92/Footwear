@@ -133,7 +133,7 @@
               <label for="confirmPassword" class="form-label">Confirm Password</label>
               <div class="input-wrapper" :class="{ 'input-focused': focusedField === 'confirmPassword', 'input-error': errors.confirmPassword }">
                 <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                 </svg>
                 <input
                   id="confirmPassword"
@@ -289,53 +289,7 @@
             Experience premium quality, exclusive collections, and personalized recommendations.
           </p>
           
-          <div class="benefits-grid">
-            <div class="benefit-card">
-              <div class="benefit-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z"/>
-                </svg>
-              </div>
-              <h3>Verified Quality</h3>
-              <p>Every product verified for authenticity and quality</p>
-            </div>
-            
-            <div class="benefit-card">
-              <div class="benefit-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
-                </svg>
-              </div>
-              <h3>Personal Stylist</h3>
-              <p>AI-powered recommendations based on your style</p>
-            </div>
-            
-            <div class="benefit-card">
-              <div class="benefit-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M2,7H22L20,17H4L2,7M6,9V15H10V9H6M12,9V15H16V9H12M18,9V15H20V9H18Z"/>
-                </svg>
-              </div>
-              <h3>Exclusive Access</h3>
-              <p>Early access to limited collections and sales</p>
-            </div>
-          </div>
-
-          <div class="trust-indicators">
-            <div class="trust-item">
-              <span class="trust-number">50K+</span>
-              <span class="trust-label">Happy Customers</span>
-            </div>
-            <div class="trust-item">
-              <span class="trust-number">4.9★</span>
-              <span class="trust-label">Average Rating</span>
-            </div>
-            <div class="trust-item">
-              <span class="trust-number">1000+</span>
-              <span class="trust-label">Premium Brands</span>
-            </div>
-          </div>
-        </div>
+                  </div>
       </div>
     </div>
   </div>
@@ -587,8 +541,11 @@ export default {
 /* Left Side - Branding */
 .auth-branding {
   flex: 1;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F5f7c383935d74e77a7e473c373cdeb30');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #000;
   padding: 4rem;
   display: flex;
   align-items: center;
@@ -610,19 +567,23 @@ export default {
 .brand-content {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
 }
 
 .logo-icon {
   width: 48px;
   height: 48px;
-  color: white;
+  color: #000;
 }
 
 .brand-name {
@@ -630,24 +591,26 @@ export default {
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.02em;
+  color: #000;
+  text-align: center;
 }
 
 .brand-tagline {
   font-size: 2.5rem;
   font-weight: 600;
-  margin: 0 0 1rem 0;
+  margin: 0 auto 1rem;
   line-height: 1.2;
-  background: linear-gradient(45deg, white, rgba(255, 255, 255, 0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #000;
+  text-align: center;
 }
 
 .brand-description {
   font-size: 1.1rem;
   line-height: 1.6;
-  margin: 0 0 3rem 0;
+  margin: 0 auto 3rem;
   opacity: 0.9;
+  color: #000;
+  text-align: center;
 }
 
 .features-list {

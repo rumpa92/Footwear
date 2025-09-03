@@ -10,27 +10,10 @@
           :class="{ active: currentSlide === index }"
           :style="{ backgroundImage: `url(${slide.image})` }"
         >
-          <div class="banner-overlay">
-            <div class="container">
-              <div class="banner-content">
-                <h1 class="banner-title">{{ slide.title || categoryTitle }}</h1>
-                <p class="banner-subtitle">{{ slide.subtitle || categoryDescription }}</p>
-              </div>
-            </div>
-          </div>
+          <div class="banner-overlay"></div>
         </div>
       </div>
 
-      <!-- Slider Navigation -->
-      <div class="slider-navigation">
-        <button
-          v-for="(slide, index) in bannerSlides"
-          :key="index"
-          @click="goToSlide(index)"
-          class="slider-dot"
-          :class="{ active: currentSlide === index }"
-        ></button>
-      </div>
     </div>
 
     <div class="container">
@@ -410,9 +393,10 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
-  display: flex;
-  align-items: center;
+  background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F3a95ebf01aa24f92a4c0b4c1105367c0');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .banner-content {
