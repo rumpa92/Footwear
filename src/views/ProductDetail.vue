@@ -2077,6 +2077,11 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 2rem 0 2rem;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .modal-header h3 {
