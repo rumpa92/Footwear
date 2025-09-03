@@ -341,7 +341,7 @@
     <div v-if="showWriteReviewModal" class="modal-overlay" @click="closeWriteReview">
       <div class="modal-content" @click.stop>
         <div class="modal-header">
-          <h3>Write a Review — {{ product ? product.name : 'Product' }}</h3>
+          <h3>Write a Review</h3>
           <button @click="closeWriteReview" class="close-btn" aria-label="Close">×</button>
         </div>
         <div class="modal-body">
@@ -2103,6 +2103,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -3px;
 }
 
 .close-btn:hover {
