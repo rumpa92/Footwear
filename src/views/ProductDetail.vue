@@ -345,30 +345,136 @@
           <button @click="closeWriteReview" class="close-btn">×</button>
         </div>
         <div class="modal-body">
+          <!-- Product Snapshot -->
+          <div v-if="product" class="product-snapshot">
+            <img :src="selectedImage || product.image" :alt="product.name" class="snapshot-image" />
+            <div class="snapshot-details">
+              <h4 class="snapshot-title">{{ product.name }}</h4>
+              <div class="snapshot-price">
+                <span class="current">${{ product.price }}</span>
+                <span v-if="product.originalPrice > product.price" class="original">${{ product.originalPrice }}</span>
+              </div>
+              <div class="snapshot-meta">
+                <span>Color: {{ selectedColor || product.colors[0] }}</span>
+                <span v-if="selectedSize">Size: {{ selectedSize }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overall Rating (Mandatory) -->
           <div class="rating-input">
-            <label>Rating</label>
+            <label>Overall Rating</label>
             <div class="star-input">
-              <button 
-                v-for="star in 5" 
-                :key="star"
+              <button
+                v-for="star in 5"
+                :key="'overall-'+star"
                 class="star-btn"
                 :class="{ filled: star <= newReview.rating }"
                 @click="newReview.rating = star"
               >★</button>
             </div>
           </div>
+
+          <!-- Category Ratings (Optional) -->
+          <div class="category-ratings">
+            <div class="rating-group">
+              <label>Quality</label>
+              <div class="star-input">
+                <button v-for="star in 5" :key="'quality-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.quality }" @click="newReview.categoryRatings.quality = star">★</button>
+              </div>
+            </div>
+            <div class="rating-group">
+              <label>Fit</label>
+              <div class="star-input">
+                <button v-for="star in 5" :key="'fit-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.fit }" @click="newReview.categoryRatings.fit = star">★</button>
+              </div>
+            </div>
+            <div class="rating-group">
+              <label>Delivery</label>
+              <div class="star-input">
+                <button v-for="star in 5" :key="'delivery-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.delivery }" @click="newReview.categoryRatings.delivery = star">★</button>
+              </div>
+            </div>
+            <div class="rating-group">
+              <label>Value for Money</label>
+              <div class="star-input">
+                <button v-for="star in 5" :key="'value-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.value }" @click="newReview.categoryRatings.value = star">★</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Title (Optional) -->
+          <div class="title-input">
+            <label>Review Title (optional)</label>
+            <input v-model="newReview.title" type="text" placeholder="e.g., Perfect Fit!" />
+          </div>
+
+          <!-- Detailed Review -->
           <div class="text-input">
-            <label>Review</label>
-            <textarea 
+            <label>Detailed Review</label>
+            <textarea
               v-model="newReview.text"
-              placeholder="Share your experience with this product..."
+              placeholder="Tell us about quality, fit, comfort, and your overall experience"
               rows="5"
             ></textarea>
           </div>
-          <div class="name-input">
-            <label>Name</label>
-            <input v-model="newReview.name" type="text" placeholder="Your name" />
+
+          <!-- Photo/Video Upload (Optional) -->
+          <div class="media-upload" @dragover.prevent @drop.prevent="onMediaDrop" @click="$refs.mediaInput.click()">
+            <input ref="mediaInput" type="file" multiple accept="image/*,video/*" @change="onMediaChange" style="display:none" />
+            <p>Drag & drop photos/videos here, or click to upload</p>
+            <div class="media-previews" v-if="newReview.mediaPreviews && newReview.mediaPreviews.length">
+              <div v-for="(src, idx) in newReview.mediaPreviews" :key="idx" class="media-thumb">
+                <img v-if="src && src.startsWith('data:')" :src="src" alt="upload preview" />
+                <video v-else controls :src="src"></video>
+                <button class="remove-media" @click.prevent="removeMedia(idx)">×</button>
+              </div>
+            </div>
           </div>
+
+          <!-- Additional Questions (Optional) -->
+          <div class="quick-selects">
+            <div class="quick-group">
+              <label>Fit</label>
+              <div class="chip-group">
+                <button class="chip" :class="{ active: newReview.fitFeedback === 'too_small' }" @click="newReview.fitFeedback = 'too_small'">Too Small</button>
+                <button class="chip" :class="{ active: newReview.fitFeedback === 'true_to_size' }" @click="newReview.fitFeedback = 'true_to_size'">True to Size</button>
+                <button class="chip" :class="{ active: newReview.fitFeedback === 'too_large' }" @click="newReview.fitFeedback = 'too_large'">Too Large</button>
+              </div>
+            </div>
+            <div class="quick-group">
+              <label>Quality</label>
+              <div class="chip-group">
+                <button class="chip" :class="{ active: newReview.qualityFeedback === 'poor' }" @click="newReview.qualityFeedback = 'poor'">Poor</button>
+                <button class="chip" :class="{ active: newReview.qualityFeedback === 'average' }" @click="newReview.qualityFeedback = 'average'">Average</button>
+                <button class="chip" :class="{ active: newReview.qualityFeedback === 'excellent' }" @click="newReview.qualityFeedback = 'excellent'">Excellent</button>
+              </div>
+            </div>
+            <div class="quick-group">
+              <label>Delivery Experience</label>
+              <div class="chip-group">
+                <button class="chip" :class="{ active: newReview.deliveryExperience === 'late' }" @click="newReview.deliveryExperience = 'late'">Late</button>
+                <button class="chip" :class="{ active: newReview.deliveryExperience === 'on_time' }" @click="newReview.deliveryExperience = 'on_time'">On-Time</button>
+                <button class="chip" :class="{ active: newReview.deliveryExperience === 'early' }" @click="newReview.deliveryExperience = 'early'">Early</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviewer Info -->
+          <div class="reviewer-info-form">
+            <div class="name-input">
+              <label>Name</label>
+              <input v-model="newReview.name" type="text" placeholder="Your name" :disabled="newReview.anonymous" />
+              <div class="reviewer-meta">
+                <label class="anon-checkbox">
+                  <input type="checkbox" v-model="newReview.anonymous" /> Post Anonymously
+                </label>
+                <span v-if="isVerifiedPurchase" class="verified-badge">Verified Purchase</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="review-guidelines">Keep reviews respectful and helpful for other shoppers.</p>
         </div>
         <div class="modal-footer">
           <button @click="closeWriteReview" class="cancel-btn">Cancel</button>
@@ -403,9 +509,17 @@ export default {
       showToast: false,
       toast: { message: '', type: '' },
       newReview: {
-        rating: 5,
+        rating: 0,
+        categoryRatings: { quality: 0, fit: 0, delivery: 0, value: 0 },
+        title: '',
         text: '',
-        name: ''
+        name: '',
+        anonymous: false,
+        fitFeedback: '',
+        qualityFeedback: '',
+        deliveryExperience: '',
+        media: [],
+        mediaPreviews: []
       },
       reviewFilters: [
         { label: 'All', value: 'all' },
@@ -452,6 +566,7 @@ export default {
   computed: {
     ...mapGetters('products', ['productById', 'allProducts']),
     ...mapGetters('cart', ['getCartItem', 'cartItems']),
+    ...mapGetters('user', ['currentUser', 'orders']),
     
     product() {
       return this.productById(this.$route.params.id)
@@ -555,9 +670,16 @@ export default {
       if (this.activeReviewFilter === 'all') return this.mockReviews
       return this.mockReviews.filter(review => review.rating === this.activeReviewFilter)
     },
-    
+
+    isVerifiedPurchase() {
+      if (!this.orders || this.orders.length === 0 || !this.product) return false
+      return this.orders.some(order =>
+        (order.items || []).some(item => item.product?.id === this.product.id || item.id === this.product.id)
+      )
+    },
+
     canSubmitReview() {
-      return this.newReview.rating > 0 && this.newReview.text.trim() && this.newReview.name.trim()
+      return this.newReview.rating > 0
     }
   },
   
@@ -844,28 +966,73 @@ export default {
     
     openWriteReview() {
       this.showWriteReviewModal = true
+      this.newReview.name = this.currentUser ? this.currentUser.name : ''
     },
     
     closeWriteReview() {
       this.showWriteReviewModal = false
-      this.newReview = { rating: 5, text: '', name: '' }
+      this.newReview = {
+        rating: 0,
+        categoryRatings: { quality: 0, fit: 0, delivery: 0, value: 0 },
+        title: '',
+        text: '',
+        name: this.currentUser ? this.currentUser.name : '',
+        anonymous: false,
+        fitFeedback: '',
+        qualityFeedback: '',
+        deliveryExperience: '',
+        media: [],
+        mediaPreviews: []
+      }
     },
     
     submitReview() {
       // In a real app, this would submit to an API
       this.mockReviews.unshift({
         id: Date.now(),
-        name: this.newReview.name,
+        name: this.newReview.anonymous ? 'Anonymous' : (this.newReview.name || 'Anonymous'),
         rating: this.newReview.rating,
-        text: this.newReview.text,
+        text: this.newReview.title ? `${this.newReview.title} — ${this.newReview.text}` : this.newReview.text,
         date: new Date(),
         avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face',
-        images: [],
+        images: this.newReview.mediaPreviews || [],
         expanded: false
       })
       
       this.showToastMessage('Review submitted successfully!', 'success')
       this.closeWriteReview()
+    },
+
+    onMediaChange(event) {
+      const files = Array.from(event.target.files || [])
+      if (!files.length) return
+      this.newReview.media = [...this.newReview.media, ...files]
+      files.forEach(file => {
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader()
+          reader.onload = e => {
+            this.newReview.mediaPreviews.push(e.target.result)
+          }
+          reader.readAsDataURL(file)
+        } else if (file.type.startsWith('video/')) {
+          const url = URL.createObjectURL(file)
+          this.newReview.mediaPreviews.push(url)
+        }
+      })
+    },
+
+    onMediaDrop(event) {
+      const files = Array.from(event.dataTransfer.files || [])
+      if (!files.length) return
+      const input = { target: { files } }
+      this.onMediaChange(input)
+    },
+
+    removeMedia(index) {
+      if (index > -1) {
+        this.newReview.media.splice(index, 1)
+        this.newReview.mediaPreviews.splice(index, 1)
+      }
     },
     
     scrollRelatedProducts(direction) {
@@ -2070,27 +2237,71 @@ export default {
 }
 
 .cancel-btn {
-  background: #f3f4f6;
-  color: #6b7280;
+  background: #ef4444;
+  color: white;
 }
 
 .cancel-btn:hover {
-  background: #e5e7eb;
+  background: #dc2626;
 }
 
 .submit-btn {
-  background: #3b82f6;
+  background: #10b981;
   color: white;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #2563eb;
+  background: #059669;
 }
 
 .submit-btn:disabled {
   background: #9ca3af;
   cursor: not-allowed;
 }
+
+/* Review Modal Additions */
+.product-snapshot {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.snapshot-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.snapshot-title {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: #1f2937;
+}
+.snapshot-price .current { font-weight: 700; color: #1f2937; }
+.snapshot-price .original { color: #9ca3af; text-decoration: line-through; margin-left: 0.5rem; }
+.snapshot-meta { color: #6b7280; font-size: 0.9rem; display: flex; gap: 0.75rem; }
+
+.category-ratings { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.rating-group label { display: block; font-weight: 600; color: #1f2937; margin-bottom: 0.25rem; }
+
+.media-upload { background: #f9fafb; border: 2px dashed #d1d5db; border-radius: 12px; text-align: center; padding: 1rem; color: #6b7280; margin-bottom: 1rem; cursor: pointer; }
+.media-previews { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.media-thumb { width: 60px; height: 60px; position: relative; border-radius: 8px; overflow: hidden; background: #000; }
+.media-thumb img, .media-thumb video { width: 100%; height: 100%; object-fit: cover; }
+.remove-media { position: absolute; top: 2px; right: 2px; border: none; background: rgba(0,0,0,0.6); color: #fff; width: 20px; height: 20px; border-radius: 50%; cursor: pointer; }
+
+.quick-selects { display: grid; gap: 1rem; margin-bottom: 1rem; }
+.chip-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.chip { padding: 0.4rem 0.75rem; border: 1px solid #e5e7eb; border-radius: 9999px; background: #fff; color: #6b7280; font-weight: 500; cursor: pointer; }
+.chip.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+
+.reviewer-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+.verified-badge { background: #10b981; color: #fff; padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; }
+
+.review-guidelines { font-size: 0.875rem; color: #6b7280; margin: 0.5rem 0 0 0; }
 
 /* Toast Styles */
 .toast {
