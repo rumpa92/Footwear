@@ -375,39 +375,6 @@
             </div>
           </div>
 
-          <!-- Category Ratings (Optional) -->
-          <div class="category-ratings">
-            <div class="rating-group">
-              <label>Quality</label>
-              <div class="star-input">
-                <button v-for="star in 5" :key="'quality-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.quality }" @click="newReview.categoryRatings.quality = star">★</button>
-              </div>
-            </div>
-            <div class="rating-group">
-              <label>Fit</label>
-              <div class="star-input">
-                <button v-for="star in 5" :key="'fit-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.fit }" @click="newReview.categoryRatings.fit = star">★</button>
-              </div>
-            </div>
-            <div class="rating-group">
-              <label>Delivery</label>
-              <div class="star-input">
-                <button v-for="star in 5" :key="'delivery-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.delivery }" @click="newReview.categoryRatings.delivery = star">★</button>
-              </div>
-            </div>
-            <div class="rating-group">
-              <label>Value for Money</label>
-              <div class="star-input">
-                <button v-for="star in 5" :key="'value-'+star" class="star-btn" :class="{ filled: star <= newReview.categoryRatings.value }" @click="newReview.categoryRatings.value = star">★</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review Title (Optional) -->
-          <div class="title-input">
-            <label>Review Title (optional)</label>
-            <input v-model="newReview.title" type="text" placeholder="e.g., Perfect Fit!" />
-          </div>
 
           <!-- Detailed Review -->
           <div class="text-input">
@@ -435,14 +402,6 @@
           <!-- Additional Questions (Optional) -->
           <div class="quick-selects">
             <div class="quick-group">
-              <label>Fit</label>
-              <div class="chip-group">
-                <button class="chip" :class="{ active: newReview.fitFeedback === 'too_small' }" @click="newReview.fitFeedback = 'too_small'">Too Small</button>
-                <button class="chip" :class="{ active: newReview.fitFeedback === 'true_to_size' }" @click="newReview.fitFeedback = 'true_to_size'">True to Size</button>
-                <button class="chip" :class="{ active: newReview.fitFeedback === 'too_large' }" @click="newReview.fitFeedback = 'too_large'">Too Large</button>
-              </div>
-            </div>
-            <div class="quick-group">
               <label>Quality</label>
               <div class="chip-group">
                 <button class="chip" :class="{ active: newReview.qualityFeedback === 'poor' }" @click="newReview.qualityFeedback = 'poor'">Poor</button>
@@ -460,21 +419,6 @@
             </div>
           </div>
 
-          <!-- Reviewer Info -->
-          <div class="reviewer-info-form">
-            <div class="name-input">
-              <label>Name</label>
-              <input v-model="newReview.name" type="text" placeholder="Your name" :disabled="newReview.anonymous" />
-              <div class="reviewer-meta">
-                <label class="anon-checkbox">
-                  <input type="checkbox" v-model="newReview.anonymous" /> Post Anonymously
-                </label>
-                <span v-if="isVerifiedPurchase" class="verified-badge">Verified Purchase</span>
-              </div>
-            </div>
-          </div>
-
-          <p class="review-guidelines">Keep reviews respectful and helpful for other shoppers.</p>
         </div>
         <div class="modal-footer">
           <button @click="closeWriteReview" class="cancel-btn">Cancel</button>
