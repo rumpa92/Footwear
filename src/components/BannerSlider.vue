@@ -174,7 +174,7 @@ export default {
           price: 199.99,
           originalPrice: 249.99,
           reviews: 856,
-          image: 'https://cdn.builder.io/api/v1/image/assets%2F320fdd3319e444dc921d47bac71874f5%2F0af7a1c7254d4db7bbca56748c65097d?format=webp&width=800'
+          image: 'https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2Fc9e5881aaf784da595211722c78d96aa?format=webp&width=800'
         },
         {
           name: 'Premium Air Max',
