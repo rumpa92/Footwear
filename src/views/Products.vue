@@ -393,7 +393,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F83a27fa46a1d4d90a1e1c11f7d990fb3');
+  background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F3a95ebf01aa24f92a4c0b4c1105367c0');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
