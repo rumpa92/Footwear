@@ -393,8 +393,11 @@ export default {
 /* Left Side - Branding */
 .auth-branding {
   flex: 1;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F3bc37b5cc67641c2a30d55aa17832bc3');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #000;
   padding: 4rem;
   display: flex;
   align-items: center;
@@ -428,7 +431,7 @@ export default {
 .logo-icon {
   width: 48px;
   height: 48px;
-  color: white;
+  color: #000;
 }
 
 .brand-name {
@@ -436,6 +439,7 @@ export default {
   font-weight: 700;
   margin: 0;
   letter-spacing: -0.02em;
+  color: #000;
 }
 
 .brand-tagline {
@@ -443,10 +447,7 @@ export default {
   font-weight: 600;
   margin: 0 0 1rem 0;
   line-height: 1.2;
-  background: linear-gradient(45deg, white, rgba(255, 255, 255, 0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #000;
 }
 
 .brand-description {
@@ -454,6 +455,7 @@ export default {
   line-height: 1.6;
   margin: 0 0 3rem 0;
   opacity: 0.9;
+  color: #000;
 }
 
 .features-list {
@@ -471,7 +473,7 @@ export default {
 .feature-icon {
   width: 24px;
   height: 24px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #000;
   flex-shrink: 0;
 }
 
