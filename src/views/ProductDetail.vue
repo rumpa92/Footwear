@@ -341,8 +341,8 @@
     <div v-if="showWriteReviewModal" class="modal-overlay" @click="closeWriteReview">
       <div class="modal-content" @click.stop>
         <div class="modal-header">
-          <h3>Write a Review</h3>
-          <button @click="closeWriteReview" class="close-btn">×</button>
+          <h3>Write a Review — {{ product ? product.name : 'Product' }}</h3>
+          <button @click="closeWriteReview" class="close-btn" aria-label="Close">×</button>
         </div>
         <div class="modal-body">
           <!-- Product Snapshot -->
@@ -2090,7 +2090,7 @@ export default {
   background: none;
   border: none;
   font-size: 2rem;
-  color: #9ca3af;
+  color: #ef4444;
   cursor: pointer;
   padding: 0;
   width: 30px;
@@ -2098,6 +2098,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.close-btn:hover {
+  color: #dc2626;
 }
 
 .modal-body {
