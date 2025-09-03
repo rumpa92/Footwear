@@ -17,26 +17,6 @@
             find your ideal pair and step confidently into your next adventure.
           </p>
           
-          <div class="features-list">
-            <div class="feature-item">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
-              </svg>
-              <span>Premium Quality Guarantee</span>
-            </div>
-            <div class="feature-item">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z"/>
-              </svg>
-              <span>Free Shipping & Easy Returns</span>
-            </div>
-            <div class="feature-item">
-              <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12,17.56L16.07,16.43L16.62,10.33L9.38,10.33L9.93,16.43L12,17.56M7.34,7L8.57,3.5L15.43,3.5L16.66,7M18.75,9L17.77,18.78C17.73,19.2 17.38,19.5 16.96,19.5H7.04C6.62,19.5 6.27,19.2 6.23,18.78L5.25,9H18.75Z"/>
-              </svg>
-              <span>Exclusive Member Benefits</span>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -419,13 +399,17 @@ export default {
 .brand-content {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
 }
 
 .logo-icon {
@@ -440,22 +424,25 @@ export default {
   margin: 0;
   letter-spacing: -0.02em;
   color: #000;
+  text-align: center;
 }
 
 .brand-tagline {
   font-size: 2.5rem;
   font-weight: 600;
-  margin: 0 0 1rem 0;
+  margin: 0 auto 1rem;
   line-height: 1.2;
   color: #000;
+  text-align: center;
 }
 
 .brand-description {
   font-size: 1.1rem;
   line-height: 1.6;
-  margin: 0 0 3rem 0;
+  margin: 0 auto 3rem;
   opacity: 0.9;
   color: #000;
+  text-align: center;
 }
 
 .features-list {
