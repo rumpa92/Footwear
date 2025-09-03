@@ -167,7 +167,7 @@ export default {
           price: 89.99,
           originalPrice: 119.99,
           reviews: 3104,
-          image: 'https://cdn.builder.io/api/v1/image/assets%2F320fdd3319e444dc921d47bac71874f5%2F6fd2df8bb40048d9ab174abfc501efb5?format=webp&width=800'
+          image: 'https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F5ad4b0132ade4d9f841cdd0efd09a8e3?format=webp&width=800'
         },
         {
           name: 'Classic Leather',
