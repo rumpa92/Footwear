@@ -275,6 +275,21 @@ export default {
           { name: 'Sports', image: 'https://images.unsplash.com/photo-1608667508764-33cf0726aae8?w=200&h=200&fit=crop&q=90', link: '/products?category=kids&type=sports', count: this.getProductCount('kids', 'sports') },
           { name: 'Casual', image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=200&h=200&fit=crop&q=90', link: '/products?category=kids&type=casual', count: this.getProductCount('kids', 'casual') },
           { name: 'Sandals', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&h=200&fit=crop&q=90', link: '/products?category=kids&type=sandals', count: this.getProductCount('kids', 'sandals') }
+        ],
+        'running': [
+          { name: 'Road Running', image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop&q=90', link: '/products?category=running&type=road', count: this.getProductCount('running', 'road') },
+          { name: 'Trail Running', image: 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=200&h=200&fit=crop&q=90', link: '/products?category=running&type=trail', count: this.getProductCount('running', 'trail') },
+          { name: 'Stability', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop&q=90', link: '/products?category=running&type=stability', count: this.getProductCount('running', 'stability') }
+        ],
+        'lifestyle': [
+          { name: 'Casual Sneakers', image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=200&h=200&fit=crop&q=90', link: '/products?category=lifestyle&type=casual', count: this.getProductCount('lifestyle', 'casual') },
+          { name: 'Slip-Ons', image: 'https://cdn.builder.io/api/v1/image/assets%2F797156030b234cce89ce7e033f2e19b8%2F88d18bf62d9542bfb83deee742928387?format=webp&width=200', link: '/products?category=lifestyle&type=slip-on', count: this.getProductCount('lifestyle', 'slip-on') },
+          { name: 'Everyday Comfort', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&h=200&fit=crop&q=90', link: '/products?category=lifestyle&type=comfort', count: this.getProductCount('lifestyle', 'comfort') }
+        ],
+        'premium': [
+          { name: 'Luxury Leather', image: 'https://cdn.builder.io/api/v1/image/assets%2F320fdd3319e444dc921d47bac71874f5%2F0af7a1c7254d4db7bbca56748c65097d?format=webp&width=200', link: '/products?category=premium&type=leather', count: this.getProductCount('premium', 'leather') },
+          { name: 'Designer Collabs', image: 'https://cdn.builder.io/api/v1/image/assets%2F797156030b234cce89ce7e033f2e19b8%2F2726d4df49e449ab977fa2433a80964b?format=webp&width=200', link: '/products?category=premium&type=collab', count: this.getProductCount('premium', 'collab') },
+          { name: 'Limited Edition', image: 'https://cdn.builder.io/api/v1/image/assets%2F797156030b234cce89ce7e033f2e19b8%2F71f042e9b7954d4aaa167f9801557461?format=webp&width=200', link: '/products?category=premium&type=limited', count: this.getProductCount('premium', 'limited') }
         ]
       }
       return subcategoryMap[this.currentCategory] || []
