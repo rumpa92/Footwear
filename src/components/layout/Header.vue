@@ -4,11 +4,7 @@
       <div class="header-content">
         <!-- Logo -->
         <router-link to="/" class="logo" aria-label="FootMarket home">
-          <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-            <rect width="64" height="36" x="0" y="16" rx="10" fill="var(--primary-color)" opacity="0.12" />
-            <path d="M10 38c6-4 20-6 34-2 4 1 8-6 12-10 2-2 0-6-3-6-6 0-14 4-20 6-8 3-20 6-25 9-3 2-2 6 2 3z" fill="var(--primary-color)" />
-            <circle cx="16" cy="44" r="3" fill="var(--accent-color)" />
-          </svg>
+          <img class="logo-mark" src="https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F582a655928e14708aff406a988792bf5?format=webp&width=800" alt="FootMarket logo" />
           <span class="logo-text"><span class="logo-name">Foot</span><span class="logo-accent">Market</span></span>
         </router-link>
 
