@@ -6,7 +6,7 @@ const state = {
       brand: "Nike",
       price: 89.99,
       originalPrice: 119.99,
-      image: "https://cdn.builder.io/api/v1/image/assets%2F320fdd3319e444dc921d47bac71874f5%2F6fd2df8bb40048d9ab174abfc501efb5?format=webp&width=600",
+      image: "https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F1c3f386ba8ea44ccb6693be21c2e1eed?format=webp&width=600",
       category: "sneakers",
       gender: "men",
       sizes: [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12],
