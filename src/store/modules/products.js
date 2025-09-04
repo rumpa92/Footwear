@@ -25,7 +25,7 @@ const state = {
       brand: "Nike",
       price: 199.99,
       originalPrice: 249.99,
-      image: "https://cdn.builder.io/api/v1/image/assets%2F320fdd3319e444dc921d47bac71874f5%2F0af7a1c7254d4db7bbca56748c65097d?format=webp&width=600",
+      image: "https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F579fe82b69f740b7b619e5b8036a607c?format=webp&width=600",
       category: "casual",
       gender: "women",
       sizes: [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10],
