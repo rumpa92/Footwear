@@ -108,7 +108,7 @@
               <div class="dropdown-menu" v-if="showUserMenu">
                 <router-link to="/profile" class="dropdown-item" @click="closeDropdown">My Profile</router-link>
                 <router-link to="/orders" class="dropdown-item" @click="closeDropdown">My Orders</router-link>
-                <router-link to="/login" class="dropdown-item" @click="closeDropdown">Sign In</router-link>
+                <router-link to="/wishlist" class="dropdown-item" @click="closeDropdown">Wishlist</router-link>
                 <button @click="handleLogout" class="dropdown-item">Sign Out</button>
               </div>
             </div>
