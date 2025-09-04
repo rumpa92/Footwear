@@ -72,12 +72,14 @@
           <!-- My Orders -->
           <button v-if="isAuthenticated" class="action-btn icon-btn-filled" @click="goToOrders">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM10 6a2 2 0 0 1 4 0v1h-4V6zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 0 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10z"/>
             </svg>
           </button>
 
           <!-- Wishlist -->
           <button class="action-btn icon-btn-filled" @click="goToWishlist">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
             </svg>
             <span class="action-count" v-if="wishlistCount">{{ wishlistCount }}</span>
           </button>
@@ -85,6 +87,7 @@
           <!-- Cart -->
           <button class="action-btn icon-btn-filled" @click="toggleCart">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l-2.5-5M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"/>
             </svg>
             <span class="action-count" v-if="cartItemCount">{{ cartItemCount }}</span>
           </button>
