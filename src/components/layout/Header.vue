@@ -70,20 +70,20 @@
         <!-- User Actions -->
         <div class="user-actions" style="margin-left: 117px;">
           <!-- My Orders -->
-          <button v-if="isAuthenticated" class="action-btn" @click="goToOrders">
+          <button v-if="isAuthenticated" class="action-btn icon-btn-filled" @click="goToOrders">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             </svg>
           </button>
 
           <!-- Wishlist -->
-          <button class="action-btn" @click="goToWishlist">
+          <button class="action-btn icon-btn-filled" @click="goToWishlist">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             </svg>
             <span class="action-count" v-if="wishlistCount">{{ wishlistCount }}</span>
           </button>
 
           <!-- Cart -->
-          <button class="action-btn" @click="toggleCart">
+          <button class="action-btn icon-btn-filled" @click="toggleCart">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             </svg>
             <span class="action-count" v-if="cartItemCount">{{ cartItemCount }}</span>
@@ -548,6 +548,18 @@ export default {
 .action-btn:hover {
   color: var(--text-primary);
   background-color: var(--bg-light);
+}
+
+/* Filled icon buttons (header actions) */
+.icon-btn-filled {
+  background-color: rgba(0,0,0,1);
+  color: rgba(0,0,0,1);
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.icon-btn-filled .action-icon {
+  stroke: rgba(0,0,0,1);
 }
 
 .action-icon {
