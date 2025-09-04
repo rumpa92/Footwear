@@ -272,7 +272,8 @@ export default {
     handleLogout() {
       this.logout()
       this.showUserMenu = false
-      this.$router.push('/')
+      // After sign out, navigate to Sign In page
+      this.$router.push('/login')
     },
     toggleMobileMenu() {
       this.showMobileMenu = !this.showMobileMenu
