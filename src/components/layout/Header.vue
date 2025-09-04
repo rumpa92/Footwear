@@ -68,7 +68,7 @@
         </div>
 
         <!-- User Actions -->
-        <div class="user-actions" style="margin-left: 117px;">
+        <div class="user-actions">
           <!-- My Orders -->
           <button v-if="isAuthenticated" class="action-btn icon-btn-filled" @click="goToOrders">
             <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -552,7 +552,7 @@ export default {
 
 /* Filled icon buttons (header actions) */
 .icon-btn-filled {
-  background-color: rgba(0,0,0,1);
+  background-color: rgba(255,255,255,1);
   color: rgba(0,0,0,1);
   border-radius: 6px;
   padding: 8px;
