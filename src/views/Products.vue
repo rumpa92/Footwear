@@ -62,9 +62,10 @@
           <!-- Toolbar -->
           <div class="products-toolbar">
             <div class="results-info">
-              <span class="results-count">{{ filteredProducts.length }} products found</span>
+              <span class="results-count" v-if="showSubcategory">New Arrivals</span>
+              <span class="results-count" v-else>{{ filteredProducts.length }} products found</span>
             </div>
-            
+
             <div class="toolbar-actions">
               <!-- Sort -->
               <div class="sort-dropdown">
