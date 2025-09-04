@@ -62,9 +62,10 @@
           <!-- Toolbar -->
           <div class="products-toolbar">
             <div class="results-info">
-              <span class="results-count">{{ filteredProducts.length }} products found</span>
+              <span class="results-count results-new" v-if="showSubcategory"><b>New Arrivals</b></span>
+              <span class="results-count" v-else>{{ filteredProducts.length }} products found</span>
             </div>
-            
+
             <div class="toolbar-actions">
               <!-- Sort -->
               <div class="sort-dropdown">
@@ -354,6 +355,14 @@ export default {
 <style scoped>
 .products-page {
   padding: 0;
+}
+
+/* Results info styles */
+.results-info .results-count.results-new {
+  color: var(--text-secondary);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 21px;
 }
 
 /* Category Banner Slider */

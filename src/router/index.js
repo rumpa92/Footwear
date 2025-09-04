@@ -53,6 +53,21 @@ const routes = [
     component: () => import('../views/auth/Login.vue')
   },
   {
+    path: '/forgot-password',
+    name: 'ForgotPassword',
+    component: () => import('../views/auth/ForgotPassword.vue')
+  },
+  {
+    path: '/verify-reset',
+    name: 'VerifyReset',
+    component: () => import('../views/auth/VerifyReset.vue')
+  },
+  {
+    path: '/reset-password',
+    name: 'ResetPassword',
+    component: () => import('../views/auth/ResetPassword.vue')
+  },
+  {
     path: '/register',
     name: 'Register',
     component: () => import('../views/auth/Register.vue')

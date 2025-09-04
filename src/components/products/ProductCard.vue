@@ -15,6 +15,14 @@
         Out of Stock
       </div>
       
+      <!-- Quick Cart Button (overlay) -->
+      <button @click.stop="quickAddToCart" class="quick-cart-btn" :disabled="!product.inStock" title="Add to cart">
+        <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l-2.5-5M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"></path>
+        </svg>
+        <span class="cart-badge" v-if="cartQuantity">{{ cartQuantity }}</span>
+      </button>
+
       <!-- Wishlist Button -->
       <button @click="toggleWishlist" class="wishlist-btn" :class="{ active: isInWishlist }">
         <svg class="wishlist-icon" :fill="isInWishlist ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,6 +93,10 @@ export default {
     ...mapGetters('user', ['isInWishlist']),
     isOnSale() {
       return this.product.originalPrice > this.product.price
+    },
+    cartQuantity() {
+      const item = this.$store.getters['cart/cartItems'].find(i => i.id === this.product.id)
+      return item ? item.quantity : 0
     },
     discountPercentage() {
       if (!this.isOnSale) return 0
@@ -180,6 +192,51 @@ export default {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   z-index: 1;
+}
+
+.quick-cart-btn {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  color: var(--text-secondary);
+  z-index: 2;
+}
+
+.quick-cart-btn:hover {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.quick-cart-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: var(--error-color);
+  color: white;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .wishlist-btn {

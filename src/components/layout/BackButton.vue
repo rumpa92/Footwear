@@ -84,7 +84,8 @@ export default {
 
       // Handle dynamic routes
       if (currentPath.startsWith('/product/')) {
-        this.$router.push('/products')
+        // From product details, go to home as requested
+        this.$router.push('/')
         return
       }
 
