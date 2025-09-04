@@ -4,7 +4,7 @@
       <div class="header-content">
         <!-- Logo -->
         <router-link to="/" class="logo" aria-label="FootMarket home">
-          <img class="logo-mark" src="https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2F582a655928e14708aff406a988792bf5?format=webp&width=800" alt="FootMarket logo" />
+          <img class="logo-mark" src="https://cdn.builder.io/api/v1/image/assets%2Fbc30722007ed4ce4a7b2c2bf9e5944d6%2Fc40e8ffa9760437a8daa85a01fa5b766?format=webp&width=800" alt="FootMarket logo" />
           <span class="logo-text"><span class="logo-name">Foot</span><span class="logo-accent">Market</span></span>
         </router-link>
 
